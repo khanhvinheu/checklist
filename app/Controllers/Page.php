@@ -4,6 +4,8 @@ use App\Models\CategoryModel;
 use App\Models\NewsModel;
 use App\Models\PostModel;
 use CodeIgniter\Controller;
+use http\Url;
+
 class Page extends Controller{
     public function index($slug= Null, $author=Null){
         $model = new PostModel();
@@ -77,6 +79,10 @@ class Page extends Controller{
         echo view('news/formPost', $data);
         echo view('templates/footer', $data);
 
+    }
+    public function deletePost($id){
+        $model= new PostModel();
+        $model->delete($id);
     }
 //    public function createPost()
 //    {

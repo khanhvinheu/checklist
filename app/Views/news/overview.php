@@ -24,7 +24,7 @@
                         <?= esc($news_item['author']); ?>
                     </div>
                     <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View article</a></p>
-
+                    <p><a href="/delete/<?= esc($news_item['id'], 'url'); ?>">Delete</a></p>
                 <?php endforeach; ?>
 
             <?php else : ?>
