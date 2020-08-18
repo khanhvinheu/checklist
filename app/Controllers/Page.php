@@ -5,9 +5,8 @@ use App\Models\NewsModel;
 use App\Models\PostModel;
 use CodeIgniter\Controller;
 class Page extends Controller{
-    public function index(){
+    public function index($slug= Null, $author=Null){
         $model = new PostModel();
-
         $data = [
             'news'  => $model->getPost(),
             'title' => 'News archive',
@@ -17,6 +16,21 @@ class Page extends Controller{
         echo view('templates/header', $data);
         echo view('news/overview', $data);
         echo view('templates/footer', $data);
+    }
+    public function filter(){
+        $model = new PostModel();
+        if($_GET['author']=='0'){
+            $data = [
+                'news'  => $model->getPost(),
+                'title' => 'News archive',
+            ];
+        }else{
+            $data = [
+                'news'  => $model->getPost_author($_GET['author']),
+                'title' => 'News archive',
+            ];
+        }
+        echo view('news/filter', $data);
     }
     public function view($slug= Null, $author=Null){
         $model = new PostModel();

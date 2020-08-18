@@ -19,7 +19,7 @@
             <label for="">Slug:</label>
             <input type="text" class="form-control" name="slug" id="text" placeholder="slug:abc-def...">
             <label for="">Category:</label>
-            <select name="category" id="inputID" class="form-control">
+            <select name="category" id="category" class="form-control">
                 <option value=""> -- Select Category --</option>
                 <?php if (! empty($category) && is_array($category)) {?>
 
@@ -32,7 +32,7 @@
                 ?>
             </select>
             <label for="">Author:</label>
-            <select name="author" id="inputID" class="form-control">
+            <select name="author" id="author" class="form-control">
                 <option value=""> -- Select Author --</option>
                 <?php if (! empty($author) && is_array($author)) {?>
 
@@ -65,6 +65,12 @@
                 text: {
                     required: true,
                     maxlength: 500
+                },
+                category:{
+                    required:true
+                },
+                author: {
+                    required:true
                 }
             },
             messages: {
@@ -75,7 +81,14 @@
                 text: {
                     required: "Content not null",
                     maxLength: " Content is max length: 500 characters"
+                },
+                category:{
+                    required: "Category not null"
+                },
+                author: {
+                    required: "Author not null"
                 }
+
             }
         });
     });

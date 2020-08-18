@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Page::index');
 $routes->get('form_post', 'Page::formPost');
 $routes->post('form_post', 'Page::formPost');
+$routes->get('filter','Page::filter');
 //$routes->post('post','Page::createPost');
 $routes->get('view', 'Page::view');
 $routes->get('news/(:segment)', 'Page::view/$1');
