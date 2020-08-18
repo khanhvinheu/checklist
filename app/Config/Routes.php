@@ -32,7 +32,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Page::index');
 $routes->get('form_post', 'Page::formPost');
-$routes->post('post','Page::createPost');
+$routes->post('form_post', 'Page::formPost');
+//$routes->post('post','Page::createPost');
 $routes->get('view', 'Page::view');
 $routes->get('news/(:segment)', 'Page::view/$1');
 $routes->get('news', 'Page::index');

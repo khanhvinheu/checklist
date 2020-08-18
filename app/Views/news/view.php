@@ -3,5 +3,5 @@
     <hr>
     <?= esc($news['text']); ?>
     <hr>
-    <?= esc($news['category'])?>
+    <p>Author: <?= esc($news['author'])?></p>
 </div>

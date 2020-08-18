@@ -1,19 +1,28 @@
-<?php
-?>
 <div class="container">
-    <form action="post " method="post" role="form">
+    <?php if ($status=='succsess'){?>
+        <div class="alert alert-success alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+        </div>
+    <?php  }elseif($status=='error'){ ?>
+        <div class="alert alert-danger alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+        </div>
+    <?php } ?>
+    <form action="form_post" id="form_post" method="post" role="form">
         <legend><?=$title?></legend>
 
         <div class="form-group">
             <label for="">Title</label>
-            <input type="text" class="form-control" name="title" id="" placeholder="Input...">
+            <input type="text" class="form-control" name="title" id="title" placeholder="title..." required>
             <label for="">Slug</label>
-            <input type="text" class="form-control" name="slug" id="" placeholder="Input...">
+            <input type="text" class="form-control" name="slug" id="text" placeholder="slug:abc-def...">
             <label for="">Text</label>
-            <textarea type="text" class="form-control" name="text" id="" placeholder="Input..."></textarea>
+            <textarea type="text" class="form-control" name="text" id="" placeholder="Content is max length: 500 characters..." rows="22" required></textarea>
             <label for="">Category</label>
             <select name="category" id="inputID" class="form-control">
-                <option value=""> -- Select One --</option>
+                <option value=""> -- Select Category --</option>
                 <?php if (! empty($category) && is_array($category)) {?>
 
                     <?php foreach ($category as $news_item): ?>
@@ -26,7 +35,7 @@
             </select>
             <label for="">Author</label>
             <select name="author" id="inputID" class="form-control">
-                <option value=""> -- Select One --</option>
+                <option value=""> -- Select Author --</option>
                 <?php if (! empty($author) && is_array($author)) {?>
 
                     <?php foreach ($author as $news_item): ?>
@@ -41,3 +50,29 @@
         <button type="submit" class="btn btn-primary">Post</button>
     </form>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#form_post").validate({
+            rules: {
+                title: {
+                    required: true,
+                    maxlength: 100
+                },
+                text: {
+                    required: true,
+                    maxlength: 500
+                }
+            },
+            messages: {
+                title: {
+                    required: "Title not null",
+                    maxlength: "Title is max length : 100 words"
+                },
+                text: {
+                    required: "Content not null",
+                    maxLength: " Content is max length: 500 characters"
+                }
+            }
+        });
+    });
+</script>

@@ -1,6 +1,19 @@
- <div class="container">
+<div class="container">
     <h2><?= esc($title); ?></h2>
-    <hr>
+     <select name="author" id="myInput" class="form-control" >
+         <option value=""> -- Select One --</option>
+         <?php if (! empty($author) && is_array($author)) {?>
+
+             <?php foreach ($author as $news_item): ?>
+                 <option value="<?=$news_item['id']?>"><?= esc($news_item['name']); ?></option>
+             <?php endforeach; ?>
+
+         <?php } ?>
+
+         ?>
+     </select>
+
+     <hr>
     <?php if (! empty($news) && is_array($news)) : ?>
 
         <?php foreach ($news as $news_item): ?>
