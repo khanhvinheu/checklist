@@ -1,7 +1,7 @@
 <div class="container">
     <h2><?= esc($title); ?></h2>
      <select name="customers" onchange="showCustomer(this.value)" class="form-control" >
-         <option value=""> -- Select Author --</option>
+<!--         <option value=""> -- Select Author --</option>-->
          <option value="0" selected="selected">All</option>
          <?php if (! empty($author) && is_array($author)) {?>
 
