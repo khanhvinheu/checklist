@@ -11,16 +11,14 @@
         </div>
     <?php } ?>
     <form action="form_post" id="form_post" method="post" role="form">
-        <legend><?=$title?></legend>
+        <h1><?=$title?></h1>
 
         <div class="form-group">
-            <label for="">Title</label>
+            <label for="">Title:</label>
             <input type="text" class="form-control" name="title" id="title" placeholder="title..." required>
-            <label for="">Slug</label>
+            <label for="">Slug:</label>
             <input type="text" class="form-control" name="slug" id="text" placeholder="slug:abc-def...">
-            <label for="">Text</label>
-            <textarea type="text" class="form-control" name="text" id="" placeholder="Content is max length: 500 characters..." rows="22" required></textarea>
-            <label for="">Category</label>
+            <label for="">Category:</label>
             <select name="category" id="inputID" class="form-control">
                 <option value=""> -- Select Category --</option>
                 <?php if (! empty($category) && is_array($category)) {?>
@@ -33,7 +31,7 @@
 
                 ?>
             </select>
-            <label for="">Author</label>
+            <label for="">Author:</label>
             <select name="author" id="inputID" class="form-control">
                 <option value=""> -- Select Author --</option>
                 <?php if (! empty($author) && is_array($author)) {?>
@@ -46,8 +44,14 @@
 
                 ?>
             </select>
+            <label for="">Text:</label>
+            <textarea type="text" class="form-control" name="text" id="" placeholder="Content is max length: 500 characters..." rows="22" required></textarea>
+
         </div>
-        <button type="submit" class="btn btn-primary">Post</button>
+        <div class="button_post" style=" float: right;padding-bottom: 10px;">
+            <button type="submit" class="btn btn-primary">Post</button>
+            <button type="button" class="btn btn-danger">Reset</button>
+        </div>
     </form>
 </div>
 <script>

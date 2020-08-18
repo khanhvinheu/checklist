@@ -161,7 +161,7 @@ input[type="text"], input[type="password"] {
     width: 100%;
 }
 label.error {
-    display: inline-block;
+    /*display: inline-block;*/
     color:red;
     width: 100%;
     float: right;

@@ -1,7 +1,7 @@
 <div class="container">
     <h2><?= esc($title); ?></h2>
      <select name="author" id="myInput" class="form-control" >
-         <option value=""> -- Select One --</option>
+         <option value=""> -- Select Author --</option>
          <?php if (! empty($author) && is_array($author)) {?>
 
              <?php foreach ($author as $news_item): ?>
@@ -21,7 +21,7 @@
             <h3><?= esc($news_item['title']); ?></h3>
 
             <div class="main">
-                <?= esc($news_item['body']); ?>
+                <?= esc($news_item['author']); ?>
             </div>
             <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View article</a></p>
 
