@@ -1,24 +1,24 @@
 <div class="container">
-   <?php if (! empty($news) && is_array($news)) : ?>
-            <?php foreach ($news as $news_item): ?>
+    <?php if (!empty($news) && is_array($news)) : ?>
+        <?php foreach ($news as $news_item): ?>
 
-                <h3><?= esc($news_item['title']); ?></h3>
+            <h3><?= esc($news_item['title']); ?></h3>
 
-                <div class="main">
-                    <?= esc($news_item['author']); ?>
-                </div>
-                <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View article</a></p>
-                <p><a href="/delete/<?= esc($news_item['id'], 'url'); ?>">Delete</a></p>
+            <div class="main">
+                <?= esc($news_item['author']); ?>
+            </div>
+            <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View </a></p>
+            <p><a href="/delete/<?= esc($news_item['id'], 'url'); ?>">Delete</a></p>
+            <p><a href="/update/<?= esc($news_item['id'], 'url'); ?>">Edit</a></p>
+        <?php endforeach; ?>
 
-            <?php endforeach; ?>
+    <?php else : ?>
 
-        <?php else : ?>
+        <h3>No Post</h3>
 
-            <h3>No News</h3>
+        <p>Unable to find any post.</p>
 
-            <p>Unable to find any news for you.</p>
-
-        <?php endif ?>
+    <?php endif ?>
 </div>
 
 

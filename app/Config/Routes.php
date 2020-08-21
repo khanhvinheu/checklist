@@ -5,9 +5,8 @@ $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
-	require SYSTEMPATH . 'Config/Routes.php';
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
+    require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /**
@@ -31,9 +30,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Page::index');
+$routes->get('test', 'TestController::index');
+$routes->get('update/(:num)','Page::form_update/$1');
+$routes->post('update_post/(:num)','Page::update/$1');
 $routes->get('form_post', 'Page::formPost');
 $routes->post('form_post', 'Page::formPost');
-$routes->get('filter','Page::filter');
+$routes->get('filter', 'Page::filter');
 $routes->get('delete/(:num)', 'Page::deletePost/$1');
 //$routes->post('post','Page::createPost');
 $routes->get('view', 'Page::view');
@@ -55,7 +57,6 @@ $routes->get('(:any)', 'Pages::view/$1');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
-	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
+    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

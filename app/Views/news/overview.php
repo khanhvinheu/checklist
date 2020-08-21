@@ -1,20 +1,26 @@
+<?php
+//print_r($_COOKIE['name']);
+//print_r($_SESSION['session']);
+//print_r($news);
+
+?>
 <div class="container">
     <h2><?= esc($title); ?></h2>
-     <select name="customers" onchange="showCustomer(this.value)" class="form-control" >
-<!--         <option value=""> -- Select Author --</option>-->
-         <option value="0" selected="selected">All</option>
-         <?php if (! empty($author) && is_array($author)) {?>
+    <select name="customers" onchange="showCustomer(this.value)" class="form-control">
+        <!--         <option value=""> -- Select Author --</option>-->
+        <option value="0" selected="selected">All</option>
+        <?php if (!empty($author) && is_array($author)) { ?>
 
-             <?php foreach ($author as $news_item): ?>
-                 <option value="<?=$news_item['id']?>"><?= esc($news_item['name']); ?></option>
-             <?php endforeach; ?>
+            <?php foreach ($author as $news_item): ?>
+                <option value="<?= $news_item['id'] ?>"><?= esc($news_item['name']); ?></option>
+            <?php endforeach; ?>
 
-         <?php } ?>
-
-         ?>
-     </select>
-    <div id="txtHint"><div class="container">
-            <?php if (! empty($news) && is_array($news)) : ?>
+        <?php } ?>
+        ?>
+    </select>
+    <div id="txtHint">
+        <div class="container">
+            <?php if (!empty($news) && is_array($news)) : ?>
 
                 <?php foreach ($news as $news_item): ?>
 
@@ -23,19 +29,19 @@
                     <div class="main">
                         <?= esc($news_item['author']); ?>
                     </div>
-                    <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View article</a></p>
+                    <p><a href="/news/<?= esc($news_item['slug'], 'url'); ?>">View</a></p>
                     <p><a href="/delete/<?= esc($news_item['id'], 'url'); ?>">Delete</a></p>
+                    <p><a href="/update/<?= esc($news_item['id'], 'url'); ?>">Edit</a></p>
                 <?php endforeach; ?>
 
             <?php else : ?>
+                <h3>No Post</h3>
 
-                <h3>No News</h3>
-
-                <p>Unable to find any news for you.</p>
+                <p>Unable to find any post.</p>
 
             <?php endif ?>
-        </div></div>
-
+        </div>
+    </div>
 </div>
 <script>
     function showCustomer(str) {
@@ -45,12 +51,12 @@
             return;
         }
         xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("txtHint").innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "filter?author="+str, true);
+        xhttp.open("GET", "filter?author=" + str, true);
         xhttp.send();
     }
 </script>
