@@ -2,11 +2,11 @@
 //print_r($_COOKIE['name']);
 //print_r($_SESSION['session']);
 //print_r($news);
-
 ?>
 <div class="container">
     <h2><?= esc($title); ?></h2>
-    <select name="customers" onchange="showCustomer(this.value)" class="form-control">
+    <select id="customers" class="form-control">
+<!--        onchange="showCustomer(this.value)"-->
         <!--         <option value=""> -- Select Author --</option>-->
         <option value="0" selected="selected">All</option>
         <?php if (!empty($author) && is_array($author)) { ?>
@@ -44,7 +44,9 @@
     </div>
 </div>
 <script>
+    document.getElementById("customers").addEventListener("change",showCustomer );
     function showCustomer(str) {
+        str = $('#customers').val();
         var xhttp;
         if (str == "") {
             document.getElementById("txtHint").innerHTML = "";
