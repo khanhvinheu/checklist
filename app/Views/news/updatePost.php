@@ -1,15 +1,15 @@
 <div class="container">
-<!--    --><?php //if ($status=='succsess'){?>
-<!--        <div class="alert alert-success alert-dismissible fade in">-->
-<!--            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
-<!--            <strong>Success!</strong> This alert box could indicate a successful or positive action.-->
-<!--        </div>-->
-<!--    --><?php // }elseif($status=='error'){ ?>
-<!--        <div class="alert alert-danger alert-dismissible fade in">-->
-<!--            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
-<!--            <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.-->
-<!--        </div>-->
-<!--    --><?php //} ?>
+    <?php if ($status=='success'){?>
+        <div class="alert alert-success alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+        </div>
+    <?php  }elseif($status=='error'){ ?>
+        <div class="alert alert-danger alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+        </div>
+    <?php } ?>
     <?php
     ?>
     <form action="/update_post/<?php echo $post[0]['id']?>" id="form_post" method="post" role="form">

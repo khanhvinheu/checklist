@@ -28,6 +28,7 @@
 //$car = new Car;
 class a
 {
+    private $t;
     public function test_1()
     {
         echo "a";
@@ -45,7 +46,7 @@ class a
 
     public static function test_4()
     {
-        echo 'ddfdsfd';
+        echo 'd';
     }
     //call function on class
     //$this->test_1();
@@ -86,21 +87,22 @@ echo "<br>";
 echo a::test_4();
 echo $b->test_seft();
 trait x{
-    public function test_x(){
+    public function test(){
         echo 'x';
     }
 }
 trait y{
-    public function text_y(){
+    public function test1(){
         echo 'y';
     }
 }
 class test_trait {
-    use x,y;
+    use y;
+   // use x;
+    public  function  test(){
+        ECHO 'Z';
+    }
 }
 $trait = new test_trait;
-echo'<br>';
-echo $trait->test_x();
-echo $trait->text_y();
-//$c = new c;
-//echo $c->test_1();
+echo'<br>---------';
+echo $trait->test();

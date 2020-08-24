@@ -6,7 +6,6 @@ use App\Models\NewsModel;
 use App\Models\PostModel;
 use CodeIgniter\Controller;
 
-
 class Page extends Controller
 {
     public function index($slug = Null, $author = Null)
@@ -67,7 +66,7 @@ class Page extends Controller
         $data['author'] = $model->getAuthor();
         $data['category'] = $categoryModel->getCategory();
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'title' => 'required|min_length[10]|max_length[500]',
+                'title' => 'required',
                 'text' => 'required'
             ])) {
             $model = new PostModel();
@@ -115,7 +114,7 @@ class Page extends Controller
     public function update($id)
     {
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'title' => 'required|min_length[10]|max_length[500]',
+                'title' => 'required',
                 'text' => 'required'
             ])) {
             $model = new PostModel();
@@ -128,12 +127,22 @@ class Page extends Controller
             ])) {
                 $data['status'] = 'success';
                 // return redirect()->to(site_url());
-                return redirect('/');
+                $model = new PostModel();
+                $model->where('id', $id);
+                $data['post'] = $model->asArray()->find();
+                $categoryModel = new CategoryModel();
+                $model = new AuthorModel();
+                $data['author'] = $model->getAuthor();
+                $data['category'] = $categoryModel->getCategory();
+                
+                echo view('templates/header', $data);
+                echo view('news/updatePost', $data);
+                echo view('templates/footer', $data);
             } else {
                 $data['status'] = 'error';
             }
         }
-        return redirect('/update');
+       // return redirect('/update');
     }
 //    public function createPost()
 //    {
